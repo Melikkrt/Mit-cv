@@ -174,10 +174,11 @@
     .btn-line { background: var(--bg-2); }
     .btn-line:hover { border-color: var(--accent); }
 
+  css
     .stats {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 24px 52px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px 20px;
       margin-top: 60px;
       padding-top: 10px;
     }
