@@ -257,3 +257,343 @@
 
     .date { color: var(--muted); font-size: 13px; font-weight: 700; letter-spacing: .8px; text-transform: uppercase; }
     .job-body { padding: 0 24px 6px; }
+
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 22px; }
+    .chip { padding: 5px 12px; background: var(--surface-2); border-radius: 8px; color: var(--accent); font-size: 13px; font-weight: 700; }
+
+    /* Uddannelse */
+    .edu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+
+    /* Kontakt */
+    .contact-card {
+      padding: 44px;
+      text-align: center;
+      background: linear-gradient(135deg, var(--accent-2), var(--surface));
+      border: 1px solid var(--line);
+      border-radius: 24px;
+    }
+
+    .contact-card h2 { margin-bottom: 14px; }
+    .contact-card .actions { justify-content: center; margin-top: 24px; }
+
+    footer { padding: 30px 20px 50px; text-align: center; color: var(--muted); font-size: 13px; }
+
+    /* Animation ved scroll */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s, transform .7s; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 760px) {
+      .nav-inner { padding: 10px 0; flex-wrap: wrap; }
+      .menu { order: 3; width: 100%; }
+      html { scroll-padding-top: 130px; }
+      .hero { padding: 70px 0 50px; }
+      .stats, .edu-grid { grid-template-columns: 1fr; }
+      .contact-card { padding: 30px 22px; }
+      .timeline { padding-left: 20px; }
+      details.job::before { left: -29px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .cursor { animation: none; }
+      .btn, .skill { transition: none; }
+    }
+
+    @media print {
+      nav, .theme-btn, .actions, .progress { display: none; }
+      :root, [data-theme] { --bg: #fff; --surface: #fff; --surface-2: #f2f2f2; --text: #111; --muted: #444; --line: #ccc; --accent: #12385a; }
+      .reveal { opacity: 1; transform: none; }
+      section { padding: 20px 0; break-inside: avoid; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="progress" id="progress"></div>
+
+  <nav aria-label="Hovedmenu">
+    <div class="container nav-inner">
+      <a class="brand" href="#top">Melik Karatas</a>
+
+      <div class="menu" id="menu">
+        <a href="#profil">Profil</a>
+        <a href="#kompetencer">Kompetencer</a>
+        <a href="#erfaring">Erfaring</a>
+        <a href="#uddannelse">Uddannelse</a>
+        <a href="#kontakt">Kontakt</a>
+      </div>
+
+      <button class="theme-btn" id="themeBtn" aria-label="Skift mellem mørk og lys tilstand">☾</button>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="container">
+      <span class="tag">Åben for nye muligheder</span>
+      <h1>Hej, jeg er<br /><span class="typed" id="typed"></span><span class="cursor">&nbsp;</span></h1>
+      <p class="hero-sub">
+        Digital Marketing Specialist med 1 års erfaring i en inhouse-rolle.
+        Jeg arbejder med hele processen – fra strategi og kampagneopsætning
+        til analyse og optimering.
+      </p>
+
+      <div class="actions">
+        <a class="btn btn-primary" href="#erfaring">Se min erfaring</a>
+        <a class="btn btn-ghost" href="#kontakt">Kontakt mig</a>
+        <button class="btn btn-ghost" onclick="window.print()">Gem som PDF</button>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><strong data-count="90" data-suffix="%+">0</strong><span>kundetilfredshed</span></div>
+        <div class="stat"><strong data-count="4.6" data-suffix="+" data-decimals="1">0</strong><span>Trustpilot-score</span></div>
+        <div class="stat"><strong data-count="1" data-suffix=" år">0</strong><span>inhouse marketingerfaring</span></div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="profil" class="reveal">
+      <div class="container profile">
+        <p class="label">Om mig</p>
+        <h2>Profil</h2>
+        <p>
+          Digital Marketing Specialist med 1 års erfaring inden for marketing
+          i en inhouse-rolle. Jeg arbejder med hele processen – fra strategi
+          og kampagneopsætning til analyse og optimering – med fokus på at
+          skabe målbare resultater.
+        </p>
+        <p>
+          Min tilgang er datadrevet, og jeg bruger aktivt AI til at
+          effektivisere arbejdsgange, kvalificere beslutninger og styrke
+          marketingindsatsen. Som kollega er jeg grundig og samarbejdsvillig.
+        </p>
+        <p>
+          Jeg trives med klare processer og bidrager med et smil og en
+          hjælpende hånd, også når der er travlt. Privat er jeg målrettet og
+          udholdende. Jeg træner regelmæssigt og forbereder mig på den næste
+          milepæl – en indsats, der afspejler den vedholdenhed og struktur,
+          jeg også tager med ind i mit arbejde.
+        </p>
+      </div>
+    </section>
+
+    <section id="kompetencer" class="reveal">
+      <div class="container">
+        <p class="label">Det kan jeg</p>
+        <h2>Kompetencer</h2>
+        <div class="skill-grid">
+          <div class="skill">Meta Ads</div>
+          <div class="skill">Google Ads</div>
+          <div class="skill">SEO &amp; GEO</div>
+          <div class="skill">Dataanalyse &amp; rapportering</div>
+          <div class="skill">E-mail marketing</div>
+        </div>
+        <p class="muted" style="margin-top:22px">Sprog: Dansk · Engelsk · Tyrkisk</p>
+      </div>
+    </section>
+
+    <section id="erfaring" class="reveal">
+      <div class="container">
+        <p class="label">Min vej</p>
+        <h2>Ansættelseshistorik</h2>
+        <p class="muted">Klik på en stilling for at folde den ud.</p>
+
+        <div class="timeline">
+
+          <details class="job" open>
+            <summary>
+              <h3>Customer Service &amp; Operations Specialist</h3>
+              <span class="date">Shine Solutions ApS, København K · Maj 2025 – nuværende</span>
+            </summary>
+            <div class="job-body">
+              <div class="chips"><span class="chip">Kunderetention</span><span class="chip">SEO</span><span class="chip">Bogføring</span></div>
+              <p>
+                Jeg dokumenterede og fulgte op på kundesager, samarbejdede med
+                kolleger om at sikre ensartet kvalitet og arbejdede aktivt med
+                kunderetention gennem opdatering af guides, SEO-optimering af
+                hjemmesiden samt webinarer til nye kunder. Gennem denne indsats
+                opnåede jeg over 90% kundetilfredshed, hvilket bidrog til en
+                Trustpilot-score på over 4,6 stjerner.
+              </p>
+              <p>
+                Jeg supporterede desuden kunder i regnskabsopgaver, herunder
+                opfølgning på årsrapporter, bankafstemning og daglig
+                bogføring. Derudover håndterede jeg SKAT-relaterede opgaver og
+                gav bogføringsrådgivning for at sikre korrekt og rettidig
+                økonomistyring.
+              </p>
+            </div>
+          </details>
+
+          <details class="job">
+            <summary>
+              <h3>Public Affairs Researcher</h3>
+              <span class="date">Policy Group A/S, København K · August 2024 – januar 2025</span>
+            </summary>
+            <div class="job-body">
+              <div class="chips"><span class="chip">Research</span><span class="chip">Kommunikation</span><span class="chip">Interessenter</span></div>
+              <p>
+                Som PA-researcher udførte jeg research og analyser af politiske
+                udviklinger for at identificere muligheder og risici for
+                kunders kommunikations- og brandingstrategier.
+              </p>
+              <p>
+                Jeg omsatte komplekse politiske emner til klart og
+                engagerende indhold til kampagner, rapporter og
+                interessentkommunikation og understøttede udviklingen af
+                marketing- og kommunikationsmaterialer for at styrke kunders
+                positionering og synlighed. Derudover opbyggede og
+                vedligeholdt jeg relationer med politikere, embedsmænd og
+                nøgleinteressenter for at fremme samarbejde og støtte kundernes
+                initiativer.
+              </p>
+            </div>
+          </details>
+
+          <details class="job">
+            <summary>
+              <h3>Marketing Assistant / SEO Specialist</h3>
+              <span class="date">Flyhjælp A/S · Januar 2023 – januar 2024</span>
+            </summary>
+            <div class="job-body">
+              <div class="chips"><span class="chip">Google Ads</span><span class="chip">SEO</span><span class="chip">Sociale medier</span></div>
+              <p>
+                Jeg var ansvarlig for at administrere virksomhedens sociale
+                medieplatforme og øge antallet af følgere. Jeg skabte relevant
+                indhold for at tiltrække kunder inden for luftfartsbranchen til
+                Flyhjælps hjemmeside og udførte SEO-optimering for at forbedre
+                virksomhedens synlighed på søgemaskiner.
+              </p>
+              <p>
+                Derudover planlagde, oprettede og overvågede jeg
+                annonceringskampagner på Google Ads og sociale medier,
+                analyserede og rapporterede data fra forskellige
+                marketingaktiviteter for at vurdere deres effektivitet, og
+                håndterede kundehenvendelser og feedback på tværs af platforme
+                for at sikre en høj kundetilfredshed.
+              </p>
+            </div>
+          </details>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="uddannelse" class="reveal">
+      <div class="container">
+        <p class="label">Baggrund</p>
+        <h2>Uddannelse</h2>
+
+        <div class="edu-grid">
+          <div class="card">
+            <h3>PBA i international handel og markedsføring</h3>
+            <p class="date">Cphbusiness, TUD · Sep 2023 – jan 2025</p>
+            <p class="muted">Udvekslingsophold i 2. semester i forbindelse med min professionsbachelor.</p>
+          </div>
+          <div class="card">
+            <h3>Markedsføringsøkonom</h3>
+            <p class="date">Cphbusiness, Hillerød · Sep 2021 – jul 2023</p>
+          </div>
+          <div class="card">
+            <h3>Eksamensbevis</h3>
+            <p class="date">Gammel Hellerup Gymnasium · Aug 2016 – jul 2019</p>
+            <p class="muted">Jeg deltog aktivt i hueudvalget.</p>
+          </div>
+          <div class="card">
+            <h3>Frivilligt arbejde</h3>
+            <p class="date">NIBS, TUD, Dublin</p>
+            <p class="muted">Frivillig i NIBS World Wide Case Competition i Dublin.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="kontakt" class="reveal">
+      <div class="container">
+        <div class="contact-card">
+          <p class="label">Kontakt</p>
+          <h2>Lad os tage en snak</h2>
+          <p>Jeg vil gerne høre om muligheder, hvor jeg kan bidrage med datadrevet marketing.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="mailto:melikkaratas20@gmail.com">melikkaratas20@gmail.com</a>
+            <a class="btn btn-ghost" href="tel:+4581152772">+45 81 15 27 72</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>Melik Karatas · Digital Marketing Specialist · København</footer>
+
+  <script>
+    // Mørk / lys tilstand (husker valget)
+    const root = document.documentElement;
+    const btn = document.getElementById('themeBtn');
+    const saved = localStorage.getItem('theme');
+    if (saved) root.setAttribute('data-theme', saved);
+    const setIcon = () => btn.textContent = root.getAttribute('data-theme') === 'dark' ? '☾' : '☀';
+    setIcon();
+    btn.addEventListener('click', () => {
+      const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      setIcon();
+    });
+
+    // Skrivemaskine-effekt på navnet
+    const nameEl = document.getElementById('typed');
+    const fullName = 'Melik Karatas';
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      nameEl.textContent = fullName;
+    } else {
+      let i = 0;
+      const type = () => {
+        nameEl.textContent = fullName.slice(0, ++i);
+        if (i < fullName.length) setTimeout(type, 90);
+      };
+      type();
+    }
+
+    // Fremdriftslinje
+    const bar = document.getElementById('progress');
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement;
+      bar.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
+    }, { passive: true });
+
+    // Animation ved scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => io.observe(el));
+
+    // Tællere
+    document.querySelectorAll('[data-count]').forEach(el => {
+      const target = parseFloat(el.dataset.count);
+      const dec = parseInt(el.dataset.decimals || 0);
+      const suffix = el.dataset.suffix || '';
+      const start = performance.now();
+      const tick = now => {
+        const p = Math.min((now - start) / 1400, 1);
+        el.textContent = (target * p).toFixed(dec).replace('.', ',') + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    });
+
+    // Markér aktiv menu
+    const links = document.querySelectorAll('#menu a');
+    const sections = [...links].map(a => document.querySelector(a.getAttribute('href')));
+    const spy = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    sections.forEach(s => s && spy.observe(s));
+  </script>
+</body>
+</html>
