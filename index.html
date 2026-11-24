@@ -1,21 +1,47 @@
 <!DOCTYPE html>
-<html lang="da"><!-- Meta Pixel Code -->
-<!-- End Meta Pixel Code -->
+<html lang="da">
 <head>
   <meta charset="UTF-8" />
-  <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="952536a3-e68c-4182-babf-4e099cdb23a5" data-blockingmode="auto" type="text/javascript"></script>
-  <script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1728684388672039');
-fbq('track', 'PageView');
-</script>
+
+  <!-- Cookiebot -->
+  <script
+    id="Cookiebot"
+    src="https://consent.cookiebot.com/uc.js"
+    data-cbid="952536a3-e68c-4182-babf-4e099cdb23a5"
+    data-blockingmode="auto"
+    type="text/javascript">
+  </script>
+
+  <!-- Opdater Metas samtykkestatus ved ændringer -->
+  <script data-cookieconsent="ignore">
+    window.addEventListener('CookiebotOnConsentReady', function () {
+      if (
+        window.Cookiebot &&
+        typeof window.fbq === 'function'
+      ) {
+        window.fbq(
+          'consent',
+          window.Cookiebot.consent.marketing ? 'grant' : 'revoke'
+        );
+      }
+    });
+  </script>
+
+  <!-- Meta Pixel: aktiveres først efter markedsføringssamtykke -->
+  <script type="text/plain" data-cookieconsent="marketing">
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+
+    fbq('init', '1728684388672039');
+    fbq('consent', 'grant');
+    fbq('track', 'PageView');
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Melik Karatas | Digital Marketing Specialist</title>
   <meta name="description" content="Melik Karatas – Digital Marketing Specialist i København. Google Ads, Meta Ads, SEO og dataanalyse." />
@@ -497,7 +523,15 @@ fbq('track', 'PageView');
 
   </main>
 
-  <footer>© Melik Karatas · <span data-i18n="footer"></span></footer>
+ <footer>
+  © Melik Karatas · <span data-i18n="footer"></span>
+
+  <div>
+    <button type="button" onclick="Cookiebot.renew()">
+      Cookieindstillinger
+    </button>
+  </div>
+</footer>
 
   <script>
     const T = {
@@ -637,7 +671,11 @@ fbq('track', 'PageView');
     ).forEach(link => {
       link.addEventListener('click', () => {
         // Send kun, hvis pixelen er indlæst via samtykkeløsningen
-        if (typeof window.fbq !== 'function') return;
+        if (
+  !window.Cookiebot ||
+  !window.Cookiebot.consent.marketing ||
+  typeof window.fbq !== 'function'
+) return;
 
         const href = link.getAttribute('href');
         let eventName;
@@ -650,7 +688,9 @@ fbq('track', 'PageView');
           eventName = 'LinkedInClick';
         }
 
-        fbq('trackCustom', eventName);
+                fbq('trackCustom', eventName);
       });
     });
   </script>
+</body>
+</html>
