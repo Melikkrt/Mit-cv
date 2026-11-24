@@ -628,17 +628,28 @@ fbq('track', 'PageView');
     }), { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-    apply();
-  </script>
+        apply();
 
-  <noscript>
-    <img
-      height="1"
-      width="1"
-      style="display:none"
-      src="https://www.facebook.com/tr?id=1728684388672039&ev=PageView&noscript=1"
-      alt=""
-    />
-  </noscript>
-</body>
-</html>
+    // Registrer kontaktklik med tydelige navne
+    document.querySelectorAll(
+      'a[href^="mailto:"], a[href^="tel:"], a[href*="linkedin.com/"]'
+    ).forEach(link => {
+      link.addEventListener('click', () => {
+        // Send kun, hvis pixelen er indlæst via samtykkeløsningen
+        if (typeof window.fbq !== 'function') return;
+
+        const href = link.getAttribute('href');
+        let eventName;
+
+        if (href.startsWith('mailto:')) {
+          eventName = 'EmailClick';
+        } else if (href.startsWith('tel:')) {
+          eventName = 'PhoneClick';
+        } else {
+          eventName = 'LinkedInClick';
+        }
+
+        fbq('trackCustom', eventName);
+      });
+    });
+  </script>
